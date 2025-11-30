@@ -1,0 +1,21 @@
+apiVersion: apps/v1 # manage pods
+kind: ReplicaSet
+metadata:
+  name: nginx-rs
+  namespace: default
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+     namespace: default
+     labels:
+      app: nginx
+    spec:
+      containers:
+        - name: nginx-contianer 
+          image: nginx:latest
+          ports:
+            - containerPort: 80

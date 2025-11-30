@@ -1,0 +1,22 @@
+apiVersion: apps/v1 # manage pods
+kind: Deployment
+metadata:
+  name: nginx-rs
+  namespace: default
+spec:
+  replicas: 10
+  strategy: RollingUpdate
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+     namespace: default
+     labels:
+      app: nginx
+    spec:
+      containers:
+        - name: nginx-contianer 
+          image: dockersamples/examplevotingapp_vote
+          ports:
+            - containerPort: 80

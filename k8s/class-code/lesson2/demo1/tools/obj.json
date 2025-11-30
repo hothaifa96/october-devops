@@ -1,0 +1,8 @@
+
+
+{
+    "name":"hassan",
+    "age":"11",
+    "address":{"city":"josn","postalcode":123},
+    "cars": ["lambo","bmw","tesla"]
+}

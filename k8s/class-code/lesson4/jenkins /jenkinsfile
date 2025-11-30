@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    stages{
+        stage("Stage A"){
+            steps{
+                sh 'echo hello form command A'
+            }
+        }
+        stage("Stage B"){
+            steps{
+                sh 'date'
+            }
+        }
+    }
+}
