@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-backup-job
+  labels:
+    app: db-backup
+spec:
+  ttlSecondsAfterFinished: 600
+  backoffLimit: 3
+  template:
+    metadata:
+      labels:
+        app: db-backup
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: db-backup
+        image: db-backup:latest
+        imagePullPolicy: Never
+        env:
+        - name: MAX_RETRIES
+          value: "3"
+        - name: RETRY_DELAY
+          value: "2"
+        - name: BACKUP_PATH
+          value: "/tmp/db_backup.sql"
+        - name: FAIL_RATE
+          value: "0.2"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+

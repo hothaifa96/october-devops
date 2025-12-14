@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: data-pipeline-cronjob
+  labels:
+    app: data-pipeline
+spec:
+  schedule: "0 * * * *"  # Every hour at minute 0
+  concurrencyPolicy: Forbid  # Prevent overlapping runs
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: data-pipeline
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: data-pipeline
+            image: data-pipeline:latest
+            imagePullPolicy: Never
+            env:
+            - name: DATA_SOURCES
+              value: "3"
+            - name: OUTPUT_DIR
+              value: "/tmp/reports"
+            - name: TEMP_DIR
+              value: "/tmp/pipeline"
+            - name: REPORT_FORMAT
+              value: "json"
+            resources:
+              requests:
+                memory: "256Mi"
+                cpu: "200m"
+              limits:
+                memory: "512Mi"
+                cpu: "500m"
+

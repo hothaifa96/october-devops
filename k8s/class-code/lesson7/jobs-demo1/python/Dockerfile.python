@@ -1,0 +1,10 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY python-job.py .
+
+RUN chmod +x python-job.py
+
+CMD ["python3", "python-job.py"]
+

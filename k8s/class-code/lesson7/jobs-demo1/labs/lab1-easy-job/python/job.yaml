@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: number-processor-job
+spec:
+  ttlSecondsAfterFinished: 300
+  template:
+    spec:
+      containers:
+      - name: number-processor
+        image: number-processor:latest
+        imagePullPolicy: Never
+      restartPolicy: Never
+

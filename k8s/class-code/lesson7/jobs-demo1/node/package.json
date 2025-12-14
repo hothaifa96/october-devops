@@ -1,0 +1,16 @@
+{
+  "name": "k8s-node-job",
+  "version": "1.0.0",
+  "description": "Node.js job with axios for external connections",
+  "main": "node-job.js",
+  "scripts": {
+    "start": "node node-job.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

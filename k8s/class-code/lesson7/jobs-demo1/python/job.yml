@@ -1,0 +1,13 @@
+apiVersion: batch/v1 
+kind: Job
+metadata:
+  name: python-job-1
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+      - name: migration-job
+        image: python-job:latest
+        imagePullPolicy: Never
+      restartPolicy: Never
