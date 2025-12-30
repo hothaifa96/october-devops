@@ -32,7 +32,7 @@
     Link each microservice to the database if necessary.
     Test the entire application using Docker Compose to ensure services communicate as expected.
 6.  Prepare for Kubernetes (Minikube) Deployment
-
+  
 ## Create Kubernetes manifests for each microservice:
 
 - Deployment files to define pods and replicas.
